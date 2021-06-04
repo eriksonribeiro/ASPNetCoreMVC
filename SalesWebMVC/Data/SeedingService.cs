@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using SalesWebMVC.Models;
 using SalesWebMVC.Models.Enums;
-using Microsoft.EntityFrameworkCore.SqlServer;
 
 namespace SalesWebMVC.Data
 {
