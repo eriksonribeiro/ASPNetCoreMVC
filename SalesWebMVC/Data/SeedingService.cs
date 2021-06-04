@@ -24,10 +24,10 @@ namespace SalesWebMVC.Data
                 return;
             }
 
-            Department department1 = new Department() {Id = 1, Name = "Music" };
-            Department department2 = new Department() {Id = 2, Name = "FanFics" };
-            Department department3 = new Department() {Id = 3, Name = "Fashion" };
-            Department department4 = new Department() {Id = 4, Name = "Books" };
+            Department department1 = new Department() {Name = "Music" };
+            Department department2 = new Department() {Name = "FanFics" };
+            Department department3 = new Department() {Name = "Fashion" };
+            Department department4 = new Department() {Name = "Books" };
                                                        
             Seller seller1 = new Seller() {Name = "Madonna"  , Email = "mdna@studio69.com"       , BirthDate = new DateTime(1958, 8, 16) , BaseSalary = 5000.00, Department = department1};
             Seller seller2 = new Seller() {Name = "Rihanna"  , Email = "badgirlriri@studio69.com", BirthDate = new DateTime(1988, 2, 22) , BaseSalary = 5000.00, Department = department3};
