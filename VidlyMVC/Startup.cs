@@ -4,10 +4,12 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using VidlyMVC.Data;
 
 namespace VidlyMVC
 {
@@ -24,6 +26,8 @@ namespace VidlyMVC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddDbContext<VidlyMVCContext>(options => options.UseSqlServer(Configuration.GetConnectionString("VidlyMVCDBConnection"), builder => builder.MigrationsAssembly("VidlyMVC")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
