@@ -1,17 +1,26 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using VidlyMVC.Data;
 using VidlyMVC.Models;
 
 namespace VidlyMVC.Controllers
 {
     public class CustomersController : Controller
     {
+        private VidlyMVCContext _context;
+
+        public CustomersController(VidlyMVCContext context)
+        {
+            _context = context;
+        }
+
         public IActionResult Index()
         {
-            var customers = GetCustomers();
+            var customers = _context.Customer.Include(c => c.MembershipType).ToList();
             return View(customers);
         }
 
@@ -20,18 +29,9 @@ namespace VidlyMVC.Controllers
             if (id == null)
                 return NotFound();
 
-            var customers = GetCustomers().FirstOrDefault(c => c.Id == id);
+            var customers = _context.Customer.FirstOrDefault(c => c.Id == id);
 
             return View(customers);
-        }
-
-        public IEnumerable<Customer> GetCustomers()
-        {
-            return new List<Customer>
-            {
-              new Customer(1,"John Smith"),
-              new Customer(2, "Marry Willians")
-            };
         }
     }
 }

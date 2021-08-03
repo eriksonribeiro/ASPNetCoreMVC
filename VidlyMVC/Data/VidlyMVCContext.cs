@@ -1,9 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using VidlyMVC.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace VidlyMVC.Data
 {
@@ -16,5 +12,6 @@ namespace VidlyMVC.Data
 
         public DbSet<Customer> Customer { get; set; }
         public DbSet<Movie> Movie { get; set; }
+        public DbSet<MembershipType> MembershipType { get; set; }
     }
 }

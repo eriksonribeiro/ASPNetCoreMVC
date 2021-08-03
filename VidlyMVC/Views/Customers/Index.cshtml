@@ -21,19 +21,25 @@ else
                 <th scope="col">
                     @Html.DisplayNameFor(model => model.Name)
                 </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.MembershipType.DiscountRate)
+                </th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Id)
-                    </td>
-                    <td>
-                        <a asp-action="Details" asp-route-id="@item.Id"> @Html.DisplayFor(modelItem => item.Name) </a>
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id"> @Html.DisplayFor(modelItem => item.Name) </a>
+                </td>
+                <td>
+                     @Html.DisplayFor(modelItem => item.MembershipType.DiscountRate)%
+                </td>
+            </tr>
             }
         </tbody>
     </table>

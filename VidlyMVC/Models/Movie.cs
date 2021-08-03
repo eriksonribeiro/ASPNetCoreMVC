@@ -8,10 +8,8 @@ namespace VidlyMVC.Models
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public Movie(int id, string name)
+        public Movie()
         {
-            Id = id;
-            Name = name;
         }
     }
 }
