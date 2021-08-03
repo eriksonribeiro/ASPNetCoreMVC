@@ -1,11 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using VidlyMVC.Data;
-using VidlyMVC.Models;
+using VidlyMVC.Models.ViewModels;
 
 namespace VidlyMVC.Controllers
 {
@@ -22,6 +19,13 @@ namespace VidlyMVC.Controllers
         {
             var customers = _context.Customer.Include(c => c.MembershipType).ToList();
             return View(customers);
+        }
+
+        public IActionResult Create()
+        {
+            var membershipTypes = _context.MembershipType.ToList();
+            var viewModel = new CustomerViewModel { MembershipType = membershipTypes };
+            return View(viewModel);
         }
 
         public IActionResult Details(int? id)
