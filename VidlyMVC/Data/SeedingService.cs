@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using VidlyMVC.Models;
+using System;
 
 namespace VidlyMVC.Data
 {
@@ -23,7 +24,7 @@ namespace VidlyMVC.Data
             MembershipType membershipType2 = new MembershipType() {Id = 2, SignUpFree = 30, DurationInMonths = 1, DiscountRate = 10, Name = "Monthly" };
             MembershipType membershipType3 = new MembershipType() {Id = 3, SignUpFree = 90, DurationInMonths = 3, DiscountRate = 15, Name = "Quartetly" };
 
-            Customer customer1 = new Customer() {Name = "John Smith"    , IsSubscribedToNewsletter = false, MembershipType = membershipType1 };
+            Customer customer1 = new Customer() {Name = "John Smith"    , IsSubscribedToNewsletter = false, MembershipType = membershipType1 , Birthdate = new DateTime(1987, 7, 23)};
             Customer customer2 = new Customer() {Name = "Marry Willians", IsSubscribedToNewsletter = true , MembershipType = membershipType2 };
 
             Movie movie1 = new Movie() {Name = "Skrek 2"};

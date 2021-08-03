@@ -29,7 +29,7 @@ namespace VidlyMVC.Controllers
             if (id == null)
                 return NotFound();
 
-            var customers = _context.Customer.FirstOrDefault(c => c.Id == id);
+            var customers = _context.Customer.Include(c => c.MembershipType).FirstOrDefault(c => c.Id == id);
 
             return View(customers);
         }

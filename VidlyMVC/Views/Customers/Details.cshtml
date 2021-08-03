@@ -1,23 +1,30 @@
 ﻿@model VidlyMVC.Models.Customer
-@{ ViewData["Title"] = "Customer Details";
+@{ ViewData["Title"] = "Customer Detail";
 }
 
 <div>
-    <h4>@ViewData["Title"]</h4>
     <hr />
-    <dl class="dl-horizontal">
+    <h4 class="dl-horizontal">@ViewData["Title"]</h4>
+    <hr />
+
+    <h4> @Html.DisplayFor(model => model.Name)</h4>
+
+    <dl>
         <dt>
-            @Html.DisplayNameFor(model => model.Id)
+            @Html.DisplayNameFor(model => model.MembershipType.Name)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Id)
+            @Html.DisplayFor(model => model.MembershipType.Name)
         </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+        @if (Model.Birthdate.HasValue)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Birthdate)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Birthdate)
+            </dd>
+        }
     </dl>
 </div>
 <div>
