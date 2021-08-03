@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VidlyMVC.Data;
 
 namespace VidlyMVC.Migrations
 {
     [DbContext(typeof(VidlyMVCContext))]
-    partial class VidlyMVCContextModelSnapshot : ModelSnapshot
+    [Migration("20210803202827_MovieChangeAndGenre")]
+    partial class MovieChangeAndGenre
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

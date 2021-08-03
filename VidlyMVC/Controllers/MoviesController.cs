@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using VidlyMVC.Data;
-using VidlyMVC.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace VidlyMVC.Controllers
 {
@@ -17,7 +17,7 @@ namespace VidlyMVC.Controllers
         }
         public IActionResult Index()
         {
-            var movies = _context.Movie.ToList();
+            var movies = _context.Movie.Include(g => g.Genre).ToList();
             return View(movies);
         }
 
@@ -26,7 +26,7 @@ namespace VidlyMVC.Controllers
             if (id == null)
                 return NotFound();
 
-            var customers = _context.Movie.FirstOrDefault(c => c.Id == id);
+            var customers = _context.Movie.Include(g => g.Genre).FirstOrDefault(c => c.Id == id);
 
             return View(customers);
         }

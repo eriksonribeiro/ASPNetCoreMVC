@@ -11,7 +11,7 @@ namespace VidlyMVC.Controllers
 {
     public class CustomersController : Controller
     {
-        private VidlyMVCContext _context;
+        private readonly VidlyMVCContext _context;
 
         public CustomersController(VidlyMVCContext context)
         {
