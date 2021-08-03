@@ -22,6 +22,9 @@ else
                     @Html.DisplayNameFor(model => model.Name)
                 </th>
                 <th scope="col">
+                    @Html.DisplayNameFor(model => model.MembershipType.Name)
+                </th>
+                <th scope="col">
                     @Html.DisplayNameFor(model => model.MembershipType.DiscountRate)
                 </th>
             </tr>
@@ -37,7 +40,10 @@ else
                     <a asp-action="Details" asp-route-id="@item.Id"> @Html.DisplayFor(modelItem => item.Name) </a>
                 </td>
                 <td>
-                     @Html.DisplayFor(modelItem => item.MembershipType.DiscountRate)%
+                    @Html.DisplayFor(modelItem => item.MembershipType.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MembershipType.DiscountRate)%
                 </td>
             </tr>
             }

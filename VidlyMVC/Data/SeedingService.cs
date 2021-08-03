@@ -19,9 +19,9 @@ namespace VidlyMVC.Data
                 return;
             }
 
-            MembershipType membershipType1 = new MembershipType() {Id = 1, SignUpFree =  0, DurationInMonths = 0, DiscountRate = 0  };
-            MembershipType membershipType2 = new MembershipType() {Id = 2, SignUpFree = 30, DurationInMonths = 1, DiscountRate = 10 };
-            MembershipType membershipType3 = new MembershipType() {Id = 3, SignUpFree = 90, DurationInMonths = 3, DiscountRate = 15 };
+            MembershipType membershipType1 = new MembershipType() {Id = 1, SignUpFree =  0, DurationInMonths = 0, DiscountRate = 0 , Name = "Pay as You Go" };
+            MembershipType membershipType2 = new MembershipType() {Id = 2, SignUpFree = 30, DurationInMonths = 1, DiscountRate = 10, Name = "Monthly" };
+            MembershipType membershipType3 = new MembershipType() {Id = 3, SignUpFree = 90, DurationInMonths = 3, DiscountRate = 15, Name = "Quartetly" };
 
             Customer customer1 = new Customer() {Name = "John Smith"    , IsSubscribedToNewsletter = false, MembershipType = membershipType1 };
             Customer customer2 = new Customer() {Name = "Marry Willians", IsSubscribedToNewsletter = true , MembershipType = membershipType2 };
