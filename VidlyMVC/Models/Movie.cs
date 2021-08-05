@@ -7,15 +7,22 @@ namespace VidlyMVC.Models
     {
         [Display(Name = "ID")]
         public int Id { get; set; }
+
+        [Display (Name = "Nome")]
         public string Name { get; set; }
-        [Display(Name = "Release Date")]
+
+        [Display(Name = "Data de Lançamento")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime ReleaseDate { get; set; }
-        [Display(Name = "Date Added")]
+
+        [Display(Name = "Data da Inclusão")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime DateAdded { get; set; }
-        [Display(Name = "Number in Stock")]
+
+        [Display(Name = "Quantidade em Estoque")]
         public int Stock { get; set; }
+
+        [Display(Name = "Gênero")]
         public Genre Genre { get; set; }
         public int GenreId { get; set; }
         public Movie()

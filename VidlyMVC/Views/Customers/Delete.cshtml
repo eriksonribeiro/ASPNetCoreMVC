@@ -1,17 +1,15 @@
 ﻿@model VidlyMVC.Models.Customer
-@{ ViewData["Title"] = "Detalhe do Cliente";
+@{ ViewData["Title"] = "Exclusão de Cliente";
 }
 
 <div class="container">
     <hr />
     <h4>@ViewData["Title"]</h4>
     <hr />
-
     <div class="row g-3">
         <div class="col-md-12">
             <h4> @Html.DisplayFor(model => model.Name)</h4>
         </div>
-
         <div class="col-md-4">
             <label class="form-label">@Html.DisplayNameFor(model => model.MembershipType.Name)</label>
             <label class="form-control">@Html.DisplayFor(model => model.MembershipType.Name)</label>
@@ -37,10 +35,17 @@
                 <label class="form-check-label">@Html.DisplayNameFor(model => model.IsSubscribedToNewsletter)</label>
             </div>
         </div>
-        <div class="col-md-12">
-            <p>
-                <a class="btn btn-primary" role="button" asp-action="Index">Voltar</a>
-            </p>
+        <div class="alert alert-danger" role="alert">
+            Tem certeza que deseja excluir este registro?
         </div>
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <div class="col-md-12">
+                <p>
+                    <button type="submit" class="btn btn-warning">Deletar</button>
+                    <a class="btn btn-primary" role="button" asp-action="Index">Voltar</a>
+                </p>
+            </div>
+        </form>
     </div>
 </div>

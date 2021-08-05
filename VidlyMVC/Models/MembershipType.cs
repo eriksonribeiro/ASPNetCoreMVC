@@ -6,14 +6,16 @@ namespace VidlyMVC.Models
     {
         public byte Id { get; set; }
         public short SignUpFree { get; set; }
+
+        [Display(Name="Duração em Meses")]
         public byte DurationInMonths { get; set; }
 
-        [Display(Name = "Discount Rate")]
+        [Display(Name = "Desconto(%)")]
         public byte DiscountRate { get; set; }
 
         [Required]
         [StringLength(100)]
-        [Display(Name = "Membership Name")]
+        [Display(Name = "Programa de Fidelidade")]
         public string Name { get; set; }
     }
 }

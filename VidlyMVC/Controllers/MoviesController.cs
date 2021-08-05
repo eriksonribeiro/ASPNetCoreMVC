@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using VidlyMVC.Data;
+using VidlyMVC.Models;
+using VidlyMVC.Models.ViewModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace VidlyMVC.Controllers
@@ -23,12 +25,78 @@ namespace VidlyMVC.Controllers
 
         public IActionResult Details(int? id)
         {
-            if (id == null)
+            var movie = _context.Movie.Include(g => g.Genre).FirstOrDefault(c => c.Id == id);
+
+            if (movie == null)
                 return NotFound();
 
-            var customers = _context.Movie.Include(g => g.Genre).FirstOrDefault(c => c.Id == id);
+            return View(movie);
+        }
 
-            return View(customers);
+        public IActionResult Create()
+        {
+            var genres = _context.Genre.ToList();
+            var viewModel = new MovieViewModel
+            {
+                Genre = genres
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult Create(Movie movie)
+        {
+            movie.DateAdded = DateTime.Now;
+            _context.Movie.Add(movie);
+            _context.SaveChanges();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult Edit(int? id)
+        {
+            var movie = _context.Movie.Include(g => g.Genre).SingleOrDefault(c => c.Id == id);
+
+            if (movie == null)
+                return NotFound();
+
+            var viewModel = new MovieViewModel
+            {
+                Genre = _context.Genre.ToList(),
+                Movie = movie
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Movie movie)
+        {
+            _context.Movie.Update(movie);
+            _context.SaveChanges();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult Delete(int? id)
+        {
+            var movie = _context.Movie.Include(g => g.Genre).FirstOrDefault(c => c.Id == id);
+
+            if (movie == null)
+                return NotFound();
+
+            return View(movie);
+        }
+
+
+        [HttpPost,ActionName("Delete")]
+        public IActionResult DeleteConfirmed(Movie movie)
+        {
+            _context.Movie.Remove(movie);
+            _context.SaveChanges();
+
+            return RedirectToAction(nameof(Index));
         }
 
     }
